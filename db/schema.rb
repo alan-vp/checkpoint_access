@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_26_214837) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_31_175002) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -21,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_26_214837) do
     t.string "brand"
     t.integer "model"
     t.string "license_plate"
-    t.integer "company_id", null: false
+    t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_company_vehicles_on_company_id"
@@ -35,10 +38,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_26_214837) do
     t.string "destination"
     t.text "comments"
     t.integer "mileage"
-    t.integer "user_id", null: false
-    t.integer "company_vehicle_id", null: false
+    t.bigint "company_vehicle_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["company_vehicle_id"], name: "index_entrances_on_company_vehicle_id"
     t.index ["user_id"], name: "index_entrances_on_user_id"
   end
@@ -52,10 +55,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_26_214837) do
     t.text "comments"
     t.integer "mileage"
     t.string "invoice"
-    t.integer "user_id", null: false
-    t.integer "company_vehicle_id", null: false
+    t.bigint "company_vehicle_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["company_vehicle_id"], name: "index_exits_on_company_vehicle_id"
     t.index ["user_id"], name: "index_exits_on_user_id"
   end
@@ -63,6 +66,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_26_214837) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "shift", null: false
+    t.integer "employee_number", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

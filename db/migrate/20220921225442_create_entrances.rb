@@ -8,7 +8,6 @@ class CreateEntrances < ActiveRecord::Migration[7.0]
       t.string :destination
       t.text :comments
       t.integer :mileage
-      t.references :user, null: false, foreign_key: true
       t.references :company_vehicle, null: false, foreign_key: true
 
       t.timestamps

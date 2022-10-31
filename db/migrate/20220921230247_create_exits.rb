@@ -9,7 +9,6 @@ class CreateExits < ActiveRecord::Migration[7.0]
       t.text :comments
       t.integer :mileage
       t.string :invoice
-      t.references :user, null: false, foreign_key: true
       t.references :company_vehicle, null: false, foreign_key: true
 
       t.timestamps
