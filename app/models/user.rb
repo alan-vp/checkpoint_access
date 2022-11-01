@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :entrances
   has_many :exits
+  validates :first_name, :last_name, :employee_number, :shift, :admin, presence: true
+  validates :employee_number, numericality: { only_integer: true }
 end
