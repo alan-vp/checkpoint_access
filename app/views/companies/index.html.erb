@@ -1,0 +1,7 @@
+<h1>Compañias:</h1>
+<% @companies.each do |company| %>
+  <%= company.name %>
+  <%= link_to "Crear", new_company_path(company) %>
+  <%= link_to "Editar", edit_company_path(company) %>
+  <%= link_to "Borrar", company_path(company), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+<% end %>
