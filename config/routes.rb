@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   resources :entrances, only: %i[index new create show]
 
   # Rutas de companies
-  resources :companies, except: %i[show]
+  resources :companies, except: %i[show] do
+    resources :company_vehicles
+  end
 
   # Defines the root path route ("/")
   root 'pages#home'

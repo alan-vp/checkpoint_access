@@ -1,0 +1,2 @@
+module CompanyVehiclesHelper
+end
