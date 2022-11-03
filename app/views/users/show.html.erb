@@ -1,0 +1,9 @@
+<h1>Detalles del usuario</h1>
+<ul>
+  <li>Nombre: <%= @user.first_name %> <%= @user.last_name %></li>
+  <li>Turno: <%= @user.shift %></li>
+  <li>Número de trabajador: <%= @user.employee_number %></li>
+  <li>Administrador: <%= @user.admin? ? "Sí" : "No" %></li>
+</ul>
+
+<%= link_to "Volver", users_path %>

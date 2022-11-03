@@ -1,4 +1,4 @@
-<h2>Create a user</h2>
+<h2>Crear usuario</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= f.label :shift %><br />
-    <%= f.text_field :shift, autofocus: true %>
+    <%= f.collection_select :shift, User::SHIFTS, :to_s, :to_s, prompt: true %>
   </div>
 
   <div class="field">
@@ -41,8 +41,13 @@
     <%= f.text_field :employee_number, autofocus: true %>
   </div>
 
+  <div class="field">
+    <%= f.check_box(:admin) %>
+    <%= f.label :admin %> <br />
+  </div>
+
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Crear usuario" %>
   </div>
 <% end %>
 

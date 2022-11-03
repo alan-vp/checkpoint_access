@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :entrances
   has_many :exits
-  validates :first_name, :last_name, :employee_number, :shift, :admin, presence: true
-  validates :employee_number, numericality: { only_integer: true }
+  validates :first_name, :last_name, :employee_number, :shift, presence: true
+  validates :employee_number, numericality: { only_integer: true }, uniqueness: true
+
+  SHIFTS = %w[Matutino Vespertino].freeze
+
 end
