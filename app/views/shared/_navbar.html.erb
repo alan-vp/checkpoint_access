@@ -13,8 +13,12 @@
             <li><%= link_to "Nuevo usuario", new_user_registration_path, class: "dropdown-item" %></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <li><%= link_to "Registro de entrada", entrances_path, class: "nav-link" %></li>
+        <li class="nav-item dropdown">
+          <%= link_to "Ingresos", '#', class: "nav-link dropdown-toggle", role: "button", data: {:'bs-toggle' => "dropdown"}, aria: { expanded: "false"} %>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Todos los ingresos", entrances_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Nuevo ingreso", new_entrance_path, class: "dropdown-item" %></li>
+          </ul>
         </li>
         <li class="nav-item dropdown">
           <%= link_to "Empresas", '#', class: "nav-link dropdown-toggle", role: "button", data: {:'bs-toggle' => "dropdown"}, aria: { expanded: "false"} %>
@@ -22,7 +26,6 @@
             <li><%= link_to "Empresas", companies_path, class: "dropdown-item" %></li>
             <li><%= link_to "Nueva empresa", new_company_path, class: "dropdown-item" %></li>
           </ul>
-          <a class="nav-link" href="#">Pricing</a>
         </li>
         <li class="nav-item">
           <% if user_signed_in? %>

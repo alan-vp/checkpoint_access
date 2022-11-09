@@ -1,5 +1,8 @@
 <h1>Entrances</h1>
 <% @entrances.each do |entrance| %>
-  Fecha de ingreso: <%= entrance.date %>
-  Hora de ingres: <%= entrance.time %>
+  Fecha: <%= entrance.date %>
+  Hora: <%= entrance.time.strftime("%H:%M:%S") %>
+  Nombre: <%= entrance.first_name %> <%= entrance.last_name %>
+  Compañia: <%= entrance.company.name %>
+  Matrícula: <%= entrance.company_vehicle.license_plate %>
 <% end %>
