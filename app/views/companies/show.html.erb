@@ -1,0 +1,9 @@
+<%= @company.name %>
+<%= link_to "Agregar vehículo", new_company_company_vehicle_path(@company) %>
+<% @company_vehicles.each do |vehicle| %>
+  Marca: <%= vehicle.brand %>
+  Modelo: <%= vehicle.model %>
+  Placa: <%= vehicle.license_plate %>
+  <%= link_to "Editar", edit_company_vehicle_path(vehicle) %>
+  <%= link_to "Borrar", company_vehicle_path(vehicle), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<% end %>

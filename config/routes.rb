@@ -10,9 +10,12 @@ Rails.application.routes.draw do
   resources :entrances, only: %i[index new create show]
 
   # Rutas de companies
-  resources :companies, except: %i[show] do
-    resources :company_vehicles
+  resources :companies do
+    # Rutas nesteadas de company vehicles  Ver con María las diapos de nested resources ya que al parecer SEUD no se nestea.
+    resources :company_vehicles, only: %i[new create]
   end
+  # Rutas no nesteadas de company vehicles (solo destroy)
+  resources :company_vehicles, only: %i[edit update destroy]
 
   # Defines the root path route ("/")
   root 'pages#home'

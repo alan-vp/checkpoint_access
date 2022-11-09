@@ -18,6 +18,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    @company_vehicles = @company.company_vehicles
   end
 
   def edit

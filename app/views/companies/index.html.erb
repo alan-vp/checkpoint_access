@@ -5,6 +5,7 @@
     <% @companies.each do |company| %>
       <div class="col-lg-8 mb-3">
         <%= company.name %>
+        <%= link_to "Vehiculos registrados", company_path(company)   %>
         <%= link_to "Editar", edit_company_path(company) %>
         <%= link_to "Borrar", company_path(company), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
       </div>
