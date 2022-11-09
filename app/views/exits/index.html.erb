@@ -1,0 +1,8 @@
+<h1>Salidas</h1>
+<% @exits.each do |exit| %>
+  Fecha: <%= exit.date %>
+  Hora: <%= exit.time.strftime("%H:%M:%S") %>
+  Nombre: <%= exit.first_name %> <%= exit.last_name %>
+  Compañia: <%= exit.company.name %>
+  Matrícula: <%= exit.company_vehicle.license_plate %>
+<% end %>

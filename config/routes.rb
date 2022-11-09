@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   # Rutas de entrances
   resources :entrances, only: %i[index new create show]
 
+  # Rutas de exits
+  resources :exits, only: %i[index new create show]
+
   # Rutas de companies
   resources :companies do
     # Rutas nesteadas de company vehicles  Ver con María las diapos de nested resources ya que al parecer SEUD no se nestea.

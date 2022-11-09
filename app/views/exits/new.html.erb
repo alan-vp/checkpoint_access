@@ -1,0 +1,15 @@
+<h3>Registro de salida</h3>
+<%= simple_form_for @exit do |f| %>
+  <%= f.input :date, as: :date, order: [:day, :month, :year], label: "Fecha:  " %>
+  <%= f.input :time, as: :time, label: "Hora:  " %>
+  <%= f.input :first_name, label: "Nombre:  " %>
+  <%= f.input :last_name, label: "Apellido:  " %>
+  <%= f.input :destination, label: "Área que visita:  " %>
+  <%= f.input :comments, as: :text, label: "Comentarios:  " %>
+  <%= f.association :company, label: "Empresa:  " %>
+  <%= f.association :company_vehicle, label_method: :license_plate, label: "Matrícula:  " %>
+  <%= f.input :mileage, label: "Kilometraje  " %>
+  <%= f.input :invoice, label: "Factura" %>
+  <%= f.submit %>
+<% end %>
+<%= link_to "Volver", entrances_path %>
