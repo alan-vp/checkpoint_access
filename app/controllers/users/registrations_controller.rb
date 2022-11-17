@@ -1,6 +1,29 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :authenticate_user!, :redirect_unless_admin, only: %i[:new :create :destroy]
+  skip_before_action :require_no_authentication
+
+  private
+
+  def redirect_unless_admin
+    unless current_user.try(:admin?)
+      flash[:error] = "Sólo los administradores pueden hacer eso"
+      redirect_to root_path
+    end
+  end
+
+  protected # se necesita que el override el sign_up method este como protected
+
+  def sign_up(resource, resource_path)
+    # esto sobre escribe el auto sign in y evita que el usuario recién creado inicie sesión, sacando al admin
+  end
+
+  # def after_sign_up_path_for(resource)
+  #   sign_out(resource)
+  #   '/admins' # Or :prefix_to_your_route
+  # end
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
