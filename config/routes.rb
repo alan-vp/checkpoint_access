@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :registrations => 'users/registrations' }
+  # rutas de devise, el prefijo es para poder tener acciones CRUD para que el admin pueda editar usuarios creados.
+  devise_for :users, :path_prefix => 'my', :controllers => { :registrations => 'users/registrations' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Rutas de users
-  get 'users', to: 'users#index'
-  get 'users/:id', to: 'users#show', as: 'show_user'
-  delete 'users/:id', to: 'users#destroy', as: 'destroy_user'
+
+  resources :users, only:%i[index show edit update destroy]
 
   # Rutas de entrances
   resources :entrances, only: %i[index new create show]

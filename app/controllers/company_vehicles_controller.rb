@@ -1,4 +1,5 @@
 class CompanyVehiclesController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_company, only: %i[new create]
   before_action :set_company_vehicle, only: %i[show edit update destroy]
   def index

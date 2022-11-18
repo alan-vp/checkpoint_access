@@ -4,34 +4,34 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %> <br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
+  <%#<div class="field">
+    <%= f.label :first_name %><%#<br />
     <%= f.text_field :first_name, autofocus: true %>
-  </div>
+  <%#</div>
 
   <div class="field">
-    <%= f.label :last_name %><br />
+    <%= f.label :last_name %><%#<br />
     <%= f.text_field :last_name, autofocus: true %>
-  </div>
+  <%#</div>
 
   <div class="field">
-    <%= f.label :shift %><br />
+    <%= f.label :shift %><%#<br />
     <%= f.collection_select :shift, User::SHIFTS, :to_s, :to_s, prompt: true %>
-  </div>
+  <%#</div>
 
   <div class="field">
-    <%= f.label :employee_number %><br />
-    <%= f.text_field :employee_number, autofocus: true %>
-  </div>
+    <%= f.label :employee_number %><%#<br />
+    <%#<%= f.text_field :employee_number, autofocus: true %>
+  <%#</div>
 
   <div class="field">
     <%= f.check_box(:admin) %>
-    <%= f.label :admin %> <br />
-  </div>
+    <%#<%= f.label :admin %> <%#<br />
+  </div%>
 
     <div class="field">
     <%= f.label :password %>
@@ -56,4 +56,8 @@
   </div>
 <% end %>
 
-<%= link_to "Volver", users_path %>
+<% if current_user.admin? %>
+  <%= link_to "Volver", users_path %>
+<% else %>
+  <%= link_to "Volver", user_path(current_user) %>
+<% end %>

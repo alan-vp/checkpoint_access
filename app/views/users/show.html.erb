@@ -6,4 +6,9 @@
   <li>Administrador: <%= @user.admin? ? "Sí" : "No" %></li>
 </ul>
 
-<%= link_to "Volver", users_path %>
+<%= link_to 'Editar', edit_user_registration_path  %>
+<% if @user.admin? %>
+  <%= link_to "Volver", users_path %>
+<% else %>
+  <%= link_to "Volver", root_path %>
+<% end %>
