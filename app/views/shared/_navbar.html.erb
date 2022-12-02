@@ -22,7 +22,6 @@
             <li><%= link_to "Nueva empresa", new_company_path, class: "dropdown-item" %></li>
           </ul>
         </li>
-        <% elsif current_user %>
         <li class="nav-item dropdown">
           <%= link_to "Entradas", '#', class: "nav-link dropdown-toggle", role: "button", data: {:'bs-toggle' => "dropdown"}, aria: { expanded: "false"} %>
           <ul class="dropdown-menu">
@@ -30,6 +29,7 @@
             <li><%= link_to "Nuevo ingreso", new_entrance_path, class: "dropdown-item" %></li>
           </ul>
         </li>
+        <% elsif current_user %>
         <li class="nav-item dropdown">
           <%= link_to "Salidas", '#', class: "nav-link dropdown-toggle", role: "button", data: {:'bs-toggle' => "dropdown"}, aria: { expanded: "false"} %>
           <ul class="dropdown-menu">

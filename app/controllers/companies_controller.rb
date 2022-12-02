@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, except: :vehicles
   before_action :set_company, only: %i[show edit update destroy]
   def index
     @companies = Company.all
@@ -36,6 +36,15 @@ class CompaniesController < ApplicationController
   def destroy
     if @company.destroy
       redirect_to companies_path, notice: 'Registro eliminado.'
+    end
+  end
+
+  def vehicles
+    @target = params[:target] # params[:target] lo tomamos de la URL que se construyó en el company_controller.js
+    @company = Company.find(params[:company]) # lo mismo sucede en este caso
+    @company_vehicles = @company.company_vehicles
+    respond_to do |format|
+      format.turbo_stream
     end
   end
 

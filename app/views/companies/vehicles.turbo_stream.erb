@@ -1,0 +1,4 @@
+<%= turbo_stream.update @target do %>
+  <%#= f.input :company_vehicle, collection: :company_vehicles, label_method: :license_plate, label: "Matrícula:  ", prompt: 'Selecciona una matrícula', class: 'form-select' %>
+  <%= options_from_collection_for_select @company_vehicles, "id", "license_plate", prompt: 'Selecciona una matrícula'  %> <%# Con este helper estamos sustituyendo la información que vamos a mandar al select (HTML) del segundo dropdown. %>
+<% end %>

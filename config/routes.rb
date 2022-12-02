@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Rutas de users
 
-  resources :users, only:%i[index show edit update destroy]
+  resources :users, only: %i[index show edit update destroy]
 
   # Rutas de entrances
   resources :entrances, only: %i[index new create show]
@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   resources :companies do
     # Rutas nesteadas de company vehicles  Ver con María las diapos de nested resources ya que al parecer SEUD no se nestea.
     resources :company_vehicles, only: %i[new create]
+    collection do
+      get 'vehicles'
+    end
   end
   # Rutas no nesteadas de company vehicles (solo destroy)
   resources :company_vehicles, only: %i[edit update destroy]
