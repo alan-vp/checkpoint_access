@@ -4,12 +4,18 @@
   <%= f.input :time, as: :time, label: "Hora:  " %>
   <%= f.input :first_name, label: "Nombre:  " %>
   <%= f.input :last_name, label: "Apellido:  " %>
-  <%= f.input :destination, label: "Área que visita:  " %>
+  <%= f.input :destination, label: "Lugar al que se dirige:  " %>
   <%= f.input :comments, as: :text, label: "Comentarios:  " %>
-  <%= f.association :company, label: "Empresa:  " %>
-  <%= f.association :company_vehicle, label_method: :license_plate, label: "Matrícula:  " %>
-  <%= f.input :mileage, label: "Kilometraje  " %>
-  <%= f.input :invoice, label: "Factura" %>
+  <div  data-controller="company">
+    <%= f.association :company, label: "Empresa: " , prompt: 'Selecciona una empresa', input_html: {class: 'form-select', data: {action: "change->company#change"}}  %>
+    <%= f.association :company_vehicle, label_method: :license_plate, label: "Matrícula: ", prompt: 'Selecciona una matrícula', input_html: { class: 'form-select', data: { company_target: "vehicleSelect" }} %>
+  </div>
+  <div class="mileage_input">
+    <%= f.input :mileage, label: "Kilometraje  " %>
+  </div>
+  <div class="hidden_field">
+    <%= f.input :invoice, label: "Factura" %>
+  </div>
   <%= f.submit %>
 <% end %>
 <%= link_to "Volver", entrances_path %>

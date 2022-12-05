@@ -9,10 +9,11 @@
 
   <div data-controller="company">
     <%= f.association :company, label: "Empresa:  ", prompt: 'Selecciona una empresa', input_html: {class: 'form-select', data: {action: "change->company#change"}}  %>
-    <%= f.association :company_vehicle, label_method: :license_plate, label: "Matrícula:  ", prompt: 'Selecciona una matrícula', input_html: { class: 'form-select', data: { company_target: "vehicleSelect" }} %> <%# "vehicleSelect es un nombre que nosotros pusimos arbitrariamente para que el controller JS lo identifique como target" %>
+    <%= f.association :company_vehicle,  label_method: :license_plate,  label: "Matrícula:  ", prompt: 'Selecciona una matrícula', input_html: {class: 'form-select', data: { company_target: "vehicleSelect" }} %> <%# "vehicleSelect es un nombre que nosotros pusimos arbitrariamente para que el controller JS lo identifique como target" %>
   </div>
-
-  <%= f.input :mileage, label: "Kilometraje  " %>
+  <div class="mileage_input">
+    <%= f.input :mileage, label: "Kilometraje  " %>
+  </div>
   <%= f.submit %>
 <% end %>
 <%= link_to "Volver", entrances_path %>
