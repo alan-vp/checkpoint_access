@@ -8,6 +8,6 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :employee_number, :shift, presence: true
   validates :employee_number, numericality: { only_integer: true }, uniqueness: true
 
-  SHIFTS = %w[Matutino Vespertino].freeze
+  SHIFTS = %w[Matutino Vespertino N/A].freeze
 
 end
