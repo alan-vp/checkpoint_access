@@ -1,26 +1,27 @@
-<h2>Inicia sesión</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name),  data: {turbo: false}) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :recordar_sesión %>
+<h2 class="text-center mb-3">Inicia sesión</h2>
+<div class="container d-flex justify-content-center">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class:'p-4 form-sessions' }, data: {turbo: false}) do |f| %>
+    <div class="field ">
+      <%= f.label :email, class: "my-2 w-100" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "my-2 w-100" %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Entrar" %>
-  </div>
+    <div class="field">
+      <%= f.label :password, class: "my-2 w-100" %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: "my-2 w-100" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me, class: "my-2" %>
+        <%= f.label :recordar_sesión, class: "my-2" %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Entrar", class: 'new-session-btn my-2 py-1' %>
+    </div>
 <% end %>
+</div>
 
 <%#= render "devise/shared/links" %>
