@@ -1,7 +1,15 @@
-<%= simple_form_for [@company, @company_vehicle] do |f| %>
-  <%= f.input :brand %>
-  <%= f.input :model %>
-  <%= f.input :license_plate %>
-  <%= f.submit %>
+<div class=" container d-flex justify-content-center">
+  <%= simple_form_for [@company, @company_vehicle], html: { class:'p-4 form-sessions' }  do |f| %>
+    <h2 class="text-center mb-1"> <%= title %></h2>
+    <%= f.input :brand, label: 'Marca', error: '* campo obligatorio', label_html:{class:'my-1 w-100'}, input_html: {class:'my-1 w-100'} %>
+    <%= f.input :model, label: 'Modelo', error: '* campo obligatorio', label_html:{class:'my-1 w-100'}, input_html: {class:'my-1 w-100'} %>
+    <%= f.input :license_plate,  label: 'Matrícula', error: '* campo obligatorio', label_html:{class:'my-1 w-100'}, input_html: {class:'my-1 w-100'} %>
+    <%= f.submit "Aceptar", class: 'submit-btn my-3 py-1' %>
+  <% end %>
+</div>
+
+<% if @company_vehicle.company != nil %>
+  <%= link_to "Volver", company_path(@company_vehicle.company) %>
+<% else %>
+  <%= link_to "Volver", company_path(@company)  %>
 <% end %>
-<%= link_to "Volver", company_path(@company) %>

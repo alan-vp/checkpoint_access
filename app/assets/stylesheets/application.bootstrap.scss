@@ -1,6 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Raleway:wght@300&family=Rubik&display=swap');
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-$dark_blue: 1D2D50;
-$mid_blue: 133B5C;
-$aqua: 1E5F74;
+$dark_blue: #1D2D50;
+$mid_blue: #133B5C;
+$aqua: #1E5F74;
+$cream: #FCDAB7;
+
+// generic rules
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+// new sessions form
+.form-sessions {
+  box-shadow: 1px 1px 10px rgb(0 0 0 / 30%);
+  background-color: $mid_blue;
+  border-radius: 15px;
+  width: 350px;
+  color: white;
+  font-size: 18px;
+}
+
+// forms button
+.submit-btn {
+  width: 100%;
+  background-color: $cream;
+  border: none;
+  // border: 2px solid white;
+  color: $mid_blue;
+  font-weight: bold;
+}

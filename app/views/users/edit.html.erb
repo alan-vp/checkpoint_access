@@ -1,53 +1,54 @@
-<h2>Editar usuario</h2>
-
-<%= form_for(@user) do |f| %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :shift %><br />
-    <%= f.collection_select :shift, User::SHIFTS, :to_s, :to_s, prompt: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :employee_number %><br />
-    <%= f.text_field :employee_number, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.check_box(:admin) %>
-    <%= f.label :admin %> <br />
-  </div>
+<div class="container d-flex justify-content-center">
+  <%= form_for(@user, html: { class:'p-4 form-sessions' }) do |f| %>
+  <h2 class="text-center mb-3">Editar usuario</h2>
 
     <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+      <%= f.label :email, class: "my-1 w-100" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "my-1 w-100" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :Nombre, class: "my-1 w-100" %><br />
+      <%= f.text_field :first_name, autofocus: true, class: "my-1 w-100" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Actualizar" %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= f.label :Apellido, class: "my-1 w-100" %><br />
+      <%= f.text_field :last_name, autofocus: true, class: "my-1 w-100" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :Turno, class: "my-1 w-100" %><br />
+      <%= f.collection_select :shift, User::SHIFTS, :to_s, :to_s, prompt: 'Selecciona una opción', class: "my-1 w-100" %>
+    </div>
+
+    <%# <div class="field"> %>
+      <%# = f.label :Número_de_empleado, class: "my-1 w-100" <br /> %>
+      <%#= f.text_field :employee_number, autofocus: true, class: "my-1 w-100" %>
+    <%# </div> %>
+
+    <div class="field">
+      <%= f.check_box(:admin) %>
+      <%= f.label :Administrador, class: "my-1 w100" %> <br />
+    </div>
+
+      <div class="field">
+      <%= f.label :Password, class: "my-1 w100" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> caracteres min)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "my-1 w-100" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :Confirmación_de_password, class: "my-1 w-100" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "my-1 w-100" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Actualizar", class: 'submit-btn my-2 py-1' %>
+    </div>
+  <% end %>
+</div>
 
 <%= link_to "Volver", users_path %>

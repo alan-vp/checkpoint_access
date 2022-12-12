@@ -1,60 +1,61 @@
-<h2>Editar usuario</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %> <br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <%#<div class="field">
-    <%= f.label :first_name %><%#<br />
-    <%= f.text_field :first_name, autofocus: true %>
-  <%#</div>
-
-  <div class="field">
-    <%= f.label :last_name %><%#<br />
-    <%= f.text_field :last_name, autofocus: true %>
-  <%#</div>
-
-  <div class="field">
-    <%= f.label :shift %><%#<br />
-    <%= f.collection_select :shift, User::SHIFTS, :to_s, :to_s, prompt: true %>
-  <%#</div>
-
-  <div class="field">
-    <%= f.label :employee_number %><%#<br />
-    <%#<%= f.text_field :employee_number, autofocus: true %>
-  <%#</div>
-
-  <div class="field">
-    <%= f.check_box(:admin) %>
-    <%#<%= f.label :admin %> <%#<br />
-  </div%>
+<h2 class="text-center mb-3">Editar usuario</h2>
+<div class="container d-flex justify-content-center">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class:'p-4 form-sessions' }, data: {turbo: false}) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+      <%= f.label :email, class: "my-2 w-100" %> <br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "my-2 w-100" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <%#<div class="field">
+      <%= f.label :first_name %><%#<br />
+      <%= f.text_field :first_name, autofocus: true %>
+    <%#</div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :last_name %><%#<br />
+      <%= f.text_field :last_name, autofocus: true %>
+    <%#</div>
 
-  <div class="actions">
-    <%= f.submit "Actualizar" %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= f.label :shift %><%#<br />
+      <%= f.collection_select :shift, User::SHIFTS, :to_s, :to_s, prompt: true %>
+    <%#</div>
+
+    <div class="field">
+      <%= f.label :employee_number %><%#<br />
+      <%#<%= f.text_field :employee_number, autofocus: true %>
+    <%#</div>
+
+    <div class="field">
+      <%= f.check_box(:admin) %>
+      <%#<%= f.label :admin %> <%#<br />
+    </div%>
+
+      <div class="field">
+      <%= f.label :password, class: "my-2 w-100" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> caracteres min)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "my-2 w-100" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :Confirmar_password, class: "my-2 w-100" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "my-2 w-100" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :Escriba_password_nuevamente, class: "my-2 w-100" %> <i>(Necesario password actual para confirmar cambios)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "my-2 w-100" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Actualizar", class: 'submit-btn my-2 py-1' %>
+    </div>
+  <% end %>
+</div>
 
 <% if current_user.admin? %>
   <%= link_to "Volver", users_path %>
