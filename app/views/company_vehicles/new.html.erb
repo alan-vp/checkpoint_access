@@ -1,7 +1,1 @@
-<%= simple_form_for [@company, @company_vehicle] do |f| %>
-  <%= f.input :brand %>
-  <%= f.input :model %>
-  <%= f.input :license_plate %>
-  <%= f.submit %>
-<% end %>
-<%= link_to "Volver", company_path(@company) %>
+<%= render 'company_vehicles/partials/form', title: "Añadir auto" %>

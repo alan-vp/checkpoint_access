@@ -2,9 +2,10 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-$dark_blue: 1D2D50;
-$mid_blue: 133B5C;
-$aqua: 1E5F74;
+$dark_blue: #1D2D50;
+$mid_blue: #133B5C;
+$aqua: #1E5F74;
+$cream: #FCDAB7;
 
 // generic rules
 body {
@@ -14,16 +15,19 @@ body {
 // new sessions form
 .form-sessions {
   box-shadow: 1px 1px 10px rgb(0 0 0 / 30%);
-  background-color: #133B5C;
+  background-color: $mid_blue;
   border-radius: 15px;
-  width: 300px;
+  width: 350px;
   color: white;
+  font-size: 18px;
 }
 
-// new sessions form button
-.new-session-btn {
+// forms button
+.submit-btn {
   width: 100%;
-  background-color: #1E5F74;
-  border: 2px solid white;
-  color: white;
+  background-color: $cream;
+  border: none;
+  // border: 2px solid white;
+  color: $mid_blue;
+  font-weight: bold;
 }

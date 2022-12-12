@@ -1,21 +1,30 @@
-<h3>Registro de salida</h3>
-<%= simple_form_for @exit do |f| %>
-  <%= f.input :date, as: :date, order: [:day, :month, :year], label: "Fecha:  " %>
-  <%= f.input :time, as: :time, label: "Hora:  " %>
-  <%= f.input :first_name, label: "Nombre:  " %>
-  <%= f.input :last_name, label: "Apellido:  " %>
-  <%= f.input :destination, label: "Lugar al que se dirige:  " %>
-  <%= f.input :comments, as: :text, label: "Comentarios:  " %>
-  <div  data-controller="company">
-    <%= f.association :company, label: "Empresa: " , prompt: 'Selecciona una empresa', input_html: {class: 'form-select', data: {action: "change->company#change"}}  %>
-    <%= f.association :company_vehicle, label_method: :license_plate, label: "Matrícula: ", prompt: 'Selecciona una matrícula', input_html: { class: 'form-select', data: { company_target: "vehicleSelect" }} %>
-  </div>
-  <div class="mileage_input">
-    <%= f.input :mileage, label: "Kilometraje  " %>
-  </div>
-  <div class="hidden_field">
-    <%= f.input :invoice, label: "Factura" %>
-  </div>
-  <%= f.submit %>
-<% end %>
+<div class="container d-flex justify-content-center">
+  <%= simple_form_for @exit, html: {class: 'p-4 form-sessions'} do |f| %>
+    <h3 class="text-center">Registro de salida</h3>
+    <%= f.input :date, as: :date, order: [:day, :month, :year], label: "Fecha:  ", error: '* campo obligatorio', label_html: {class: 'my-2 w-100'}, input_html: {class: 'mb-2 text-center'} %>
+    <%= f.input :time, as: :time, label: "Hora:  ", error: '* campo obligatorio', label_html: {class: 'my-2 w-100'}, input_html: {class: 'mb-2 text-center'} %>
+    <%= f.input :first_name, label: "Nombre:  ", error: '* campo obligatorio', label_html: {class: 'my-2 w-100'}, input_html: {class: 'mb-2 w-100'} %>
+    <%= f.input :last_name, label: "Apellido:  ", error: '* campo obligatorio', label_html: {class: 'my-2 w-100'}, input_html: {class: 'mb-2 w-100'} %>
+
+    <div  data-controller="company">
+      <%= f.association :company, label: "Empresa: " , prompt: 'Selecciona una empresa', label_html:{class: 'my-2 w-100'}, input_html: {class: 'form-select mb-2 w-100', data: {action: "change->company#change"}}  %>
+      <%= f.association :company_vehicle, label_method: :license_plate, label: "Matrícula: ", prompt: 'Selecciona una matrícula', label_html:{class: 'my-2 w-100'}, input_html: { class: 'form-select mb-2 w-100', data: { company_target: "vehicleSelect" }} %>
+    </div>
+
+    <div class="mileage_input">
+      <%= f.input :mileage, label: "Kilometraje  ", error: '* campo numérico obligatorio', label_html: {class: 'my-2 w-100'}, input_html: {class: 'mb-2 w-100'} %>
+    </div>
+
+    <div id='destination_fields'>
+      <%= f.input :destination, label: "Lugar al que se dirige:  ", error: '* campo obligatorio', label_html: {class: 'my-2 w-100'}, input_html: {class: 'mb-2 w-100'} %>
+    </div>
+
+    <div id="invoice_fields" class="hidden_field">
+      <%= f.input :invoice, label: "Factura: ", error: '* campo obligatorio', label_html: {class: 'my-2 w-100'}, input_html: {class: 'mb-2 w-100'} %>
+    </div>
+
+    <%= f.input :comments, as: :text, label: "Comentarios:  ", error: '* campo obligatorio', label_html: {class: 'my-2 w-100'}, input_html: {class: 'mb-2 w-100'} %>
+    <%= f.submit "Crear registro", class: 'submit-btn my-2 py-1' %>
+  <% end %>
+</div>
 <%= link_to "Volver", entrances_path %>

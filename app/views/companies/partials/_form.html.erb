@@ -1,9 +1,11 @@
-<div class="container mt-4">
-  <%= simple_form_for @company do |f| %>
-    <div class="mb-3">
-      <%= f.input :name, label: 'Nombre de la compañía', error: '* campo obligatorio', label_html: {class: 'form-label'}, input_html: {class: 'form-control'} %>
+<div class="container d-flex justify-content-center">
+  <%= simple_form_for @company, html: { class:'p-4 form-sessions'} do |f| %>
+    <h2 class="text-center mb-1"><%= title %></h2>
+    <div class="field">
+      <%= f.input :name, label: 'Nombre', error: '* campo obligatorio', label_html: {class: 'my-2 w-100'}, input_html: {class: 'mb-2 w-100'} %>
     </div>
-      <%= f.submit 'Aceptar', class: 'btn btn-primary mb-5' %>
+      <%= f.submit 'Aceptar', class: 'submit-btn my-2 py-1' %>
   <% end %>
-  <%= link_to "Back", companies_path %>
 </div>
+
+<%= link_to "Back", companies_path %>
