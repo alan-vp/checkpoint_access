@@ -1,6 +1,9 @@
 <h1 class='text-center'>Usuarios</h1>
+<div class='d-flex justify-content-end'>
+  <%= link_to "Crear usuario", new_user_session_path, class: 'btn-new-element w-25'  %>
+</div>
 
-<table class="table table-hover text-center">
+<table class="table table-hover text-center table-style">
   <thead>
     <tr>
       <th scope="col"># Empleado</th>
@@ -8,14 +11,14 @@
       <th scope="col">Email</th>
       <th scope="col">Turno</th>
       <th scope="col">Admin</th>
-      <th scope="col"></th>
+      <th scope="col">Acciones</th>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
       <tr>
         <th scope="row"><%= user.employee_number %></th>
-        <td> <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), class: 'text-decoration-none' %></td>
+        <td> <%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></td>
         <td><%= user.email %></td>
         <td><%= user.shift %></td>
         <td><%= user.admin ? "Sí" : "No" %></td>
@@ -32,5 +35,3 @@
 
   </tbody>
 </table>
-
-<%= link_to "Crear nuevo usuario", new_user_session_path  %>
