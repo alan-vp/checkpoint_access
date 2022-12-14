@@ -16,6 +16,33 @@ body {
   font-family: 'Nunito', sans-serif;
 }
 
+h1 {
+  color: $mid_blue;
+}
+
+// table styles
+.table-style {
+  border-bottom: $aqua;
+
+  thead {
+    color: $mid_blue;
+  }
+
+  tbody {
+    color: $mid_blue;
+
+    tr:hover {
+      background-color: $cream;
+    }
+
+    a {
+      text-decoration: underline dotted;
+      color: $mid_blue;
+    }
+  }
+
+}
+
 // new sessions form
 .form-sessions {
   box-shadow: 1px 1px 10px rgb(0 0 0 / 30%);
@@ -34,4 +61,21 @@ body {
   // border: 2px solid white;
   color: $mid_blue;
   font-weight: bold;
+}
+
+// create elements btn in views
+.btn-new-element {
+  color: whitesmoke;
+  background-color: #1D2D50;
+  padding: 8px 8px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+  display: block;
+  text-align: center;
+  margin: 10px 0px;
+
+  &:hover {
+    color: white;
+  }
 }

@@ -1,9 +1,31 @@
-<%= @company.name %>
-<%= link_to "Agregar vehículo", new_company_company_vehicle_path(@company) %>
-<% @company_vehicles.each do |vehicle| %>
-  Marca: <%= vehicle.brand %>
-  Modelo: <%= vehicle.model %>
-  Placa: <%= vehicle.license_plate %>
-  <%= link_to "Editar", edit_company_vehicle_path(vehicle) %>
-  <%= link_to "Borrar", company_vehicle_path(vehicle), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-<% end %>
+<h1 class='text-center'><%= @company.name %></h1>
+
+<div class='d-flex justify-content-end'>
+  <%= link_to "Agregar vehículo", new_company_company_vehicle_path(@company), class: 'btn-new-element w-25' %>
+</div>
+
+<table class="table table-hover text-center table-style">
+  <thead>
+    <tr>
+      <th scope="col">Marca</th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Placa</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @company_vehicles.each do |vehicle| %>
+      <tr>
+        <td><%= vehicle.brand%></td>
+        <td><%= vehicle.model%></td>
+        <td><%= vehicle.license_plate%></td>
+
+        <td>
+           <%= link_to "Editar", edit_company_vehicle_path(vehicle) %>
+           <%= link_to "Borrar", company_vehicle_path(vehicle), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

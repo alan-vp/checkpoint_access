@@ -1,5 +1,5 @@
 <h1 class='text-center'>Salidas</h1>
-<table class="table table-hover text-center">
+<table class="table table-hover text-center table-style">
   <thead>
     <tr>
       <th scope="col">Fecha</th>
@@ -30,12 +30,3 @@
 
   </tbody>
 </table>
-
-<h1>Salidas</h1>
-<% @exits.each do |exit| %>
-  Fecha: <%= exit.date %>
-  Hora: <%= exit.time.strftime("%H:%M:%S") %>
-  Nombre: <%= exit.first_name %> <%= exit.last_name %>
-  Compañia: <%= exit.company.name %>
-  Matrícula: <%= exit.company_vehicle.license_plate %>
-<% end %>

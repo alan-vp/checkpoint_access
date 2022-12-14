@@ -1,14 +1,29 @@
-<div class="container text-center">
-  <div class="row">
-    <h1>Empresas</h1>
-    <%= link_to "Crear", new_company_path(@company), class: 'btn btn-primary mb-5' %>
-    <% @companies.each do |company| %>
-      <div class="col-lg-8 mb-3">
-        <%= company.name %>
-        <%= link_to "Vehiculos registrados", company_path(company)   %>
-        <%= link_to "Editar", edit_company_path(company) %>
-        <%= link_to "Borrar", company_path(company), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-      </div>
-    <% end %>
-  </div>
+<h1 class='text-center'>Empresas</h1>
+<div class='d-flex justify-content-end'>
+  <%= link_to "Crear empresa", new_company_path(@company), class: 'btn-new-element w-25' %>
 </div>
+<table class="table table-hover text-center table-style">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Acciones para empresas</th>
+      <th scope="col">Vehículos registrados</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.name%></td>
+
+        <td>
+          <%= link_to "Editar", edit_company_path(company) %>
+          <%= link_to "Borrar", company_path(company), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+        </td>
+
+
+        <td><%= link_to "Detalles", company_path(company) %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
