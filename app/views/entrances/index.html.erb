@@ -1,8 +1,30 @@
-<h1>Entradas</h1>
-<% @entrances.each do |entrance| %>
-  Fecha: <%= entrance.date %>
-  Hora: <%= entrance.time.strftime("%H:%M:%S") %>
-  Nombre: <%= entrance.first_name %> <%= entrance.last_name %>
-  Compañia: <%= entrance.company.name %>
-  Matrícula: <%= entrance.company_vehicle.license_plate %>
-<% end %>
+<h1 class='text-center'>Entradas</h1>
+<table class="table table-hover text-center">
+  <thead>
+    <tr>
+      <th scope="col">Fecha</th>
+      <th scope="col">Hora</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Compañía</th>
+      <th scope="col">Matrícula</th>
+      <th scope="col">Kilometraje</th>
+      <th scope="col">Área que visita</th>
+      <th scope="col">Creado por</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @entrances.each do |entrance| %>
+      <tr>
+        <td><%= entrance.date.strftime('%d-%m-%y') %></td>
+        <td> <%= entrance.time.strftime('%T') %></td>
+        <td><%= "#{entrance.first_name} #{entrance.last_name}" %></td>
+        <td><%= entrance.company.name %></td>
+        <td><%= entrance.company_vehicle.license_plate %></td>
+        <td><%= entrance.mileage %></td>
+        <td><%= entrance.destination %></td>
+        <td><%= "#{entrance.user.first_name} #{entrance.user.last_name}" %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>

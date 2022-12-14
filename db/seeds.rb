@@ -23,22 +23,13 @@ puts "Creating companies, vehicles, entrances and exits"
   end
 end
 
-private_company = Company.create(
-  name: "Particular"
-)
-private_company_vehicle = private_company.company_vehicles.create(
-  brand: "Particular",
-  model: "Particular",
-  license_plate: 0000
-)
-
 admin = User.create(
   email: "avp@gmail.com",
   password: 123456,
   first_name: "Alan",
   last_name: "Vergara",
   shift: "N/A",
-  employee_number: 11223344,
+  employee_number: 112233,
   admin: true
 )
 
@@ -51,7 +42,7 @@ company = Company.all
     password: 123456,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    shift: %w[Matutino Vespertino],
+    shift: %w[Matutino Vespertino].sample,
     employee_number: Faker::Number.leading_zero_number(digits: 6),
     admin: false
   )
@@ -67,18 +58,6 @@ company = Company.all
     company_vehicle_id: company_vehicle.sample.id,
     user_id: user.id
   )
-end
-
-15.times do
-  user = User.create(
-    email: Faker::Internet.email(domain: 'accesspoint'),
-    password: 123456,
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    shift: %w[Matutino Vespertino],
-    employee_number: Faker::Number.leading_zero_number(digits: 6),
-    admin: false
-  )
 
   exits = Exit.create(
     date: Faker::Date.between(from: '2022-12-01', to: '2022-12-08'),
@@ -93,5 +72,40 @@ end
     user_id: user.id
   )
 end
+
+private_company = Company.create(
+  name: "Particular"
+)
+private_company_vehicle = private_company.company_vehicles.create(
+  brand: "Particular",
+  model: "Particular",
+  license_plate: "No aplica"
+)
+
+private_entrance = Entrance.create(
+  date: Faker::Date.between(from: '2022-12-01', to: '2022-12-08'),
+  time: Time.now.strftime('%T'),
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  destination: Faker::Company.industry,
+  mileage: 0,
+  company_id: private_company.id,
+  company_vehicle_id: private_company_vehicle.id,
+  user_id: 2
+)
+
+private_exit = Exit.create(
+  date: Faker::Date.between(from: '2022-12-01', to: '2022-12-08'),
+  time: Time.now.strftime('%T'),
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  destination: Faker::Company.industry,
+  mileage: 0,
+  invoice: "No aplica",
+  company_id: private_company.id,
+  company_vehicle_id: private_company_vehicle.id,
+  user_id: 2
+)
+
 
 puts "Done!"
