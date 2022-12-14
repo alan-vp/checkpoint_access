@@ -1,12 +1,36 @@
-<h1>Usuarios</h1>
-<ul>
-  <% @users.each do |user| %>
-    <%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %>
-    <%# <% if current_user.try(:admin?) && !current_user?(user) %>
-    <%= link_to "Editar usuario", edit_user_path(user) %>
-    <% if user != current_user  %>
-      <%= link_to "Borrar usuario", user_path(user), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<h1 class='text-center'>Usuarios</h1>
+
+<table class="table table-hover text-center">
+  <thead>
+    <tr>
+      <th scope="col"># Empleado</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Email</th>
+      <th scope="col">Turno</th>
+      <th scope="col">Admin</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <th scope="row"><%= user.employee_number %></th>
+        <td> <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), class: 'text-decoration-none' %></td>
+        <td><%= user.email %></td>
+        <td><%= user.shift %></td>
+        <td><%= user.admin ? "Sí" : "No" %></td>
+        <td>
+          <%= link_to edit_user_path(user) do %>
+            <i class="fab fa-github-square"></i>
+          <% end %>
+           <% if user != current_user  %>
+            <%= link_to "Borrar usuario", user_path(user), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <% end %>
+        </td>
+      </tr>
     <% end %>
-<% end %>
-</ul>
+
+  </tbody>
+</table>
+
 <%= link_to "Crear nuevo usuario", new_user_session_path  %>
