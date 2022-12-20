@@ -72,6 +72,4 @@ gem "cssbundling-rails", "~> 1.1"
 
 gem "jsbundling-rails", "~> 1.0"
 
-gem "font-awesome-rails", "~> 4.7"
-
 gem "font-awesome-sass", "~> 6.2"

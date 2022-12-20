@@ -11,7 +11,7 @@ $mid_blue: #133B5C;
 $aqua: #1E5F74;
 $cream: #FCDAB7;
 
-// generic rules
+//** generic rules
 body {
   font-family: 'Nunito', sans-serif;
 }
@@ -20,7 +20,7 @@ h1 {
   color: $mid_blue;
 }
 
-// table styles
+//** table styles
 .table-style {
   border-bottom: $aqua;
 
@@ -43,7 +43,7 @@ h1 {
 
 }
 
-// new sessions form
+//** new sessions form
 .form-sessions {
   box-shadow: 1px 1px 10px rgb(0 0 0 / 30%);
   background-color: $mid_blue;
@@ -53,7 +53,7 @@ h1 {
   font-size: 18px;
 }
 
-// forms button
+//** forms button
 .submit-btn {
   width: 100%;
   background-color: $cream;
@@ -63,10 +63,10 @@ h1 {
   font-weight: bold;
 }
 
-// create elements btn in views
+//** create elements btn in views
 .btn-new-element {
   color: whitesmoke;
-  background-color: #1D2D50;
+  background-color: $dark_blue;
   padding: 8px 8px;
   text-decoration: none;
   font-weight: bold;
@@ -77,5 +77,43 @@ h1 {
 
   &:hover {
     color: white;
+  }
+}
+
+//** home page
+.home-viewport {
+  background-color: $mid_blue;
+  height: 100vh;
+}
+
+.home-logo {
+  background-color: $mid_blue;
+}
+
+.home-slogan {
+  color: white;
+}
+
+.navbar-style {
+  background-color: $aqua;
+
+  a {
+    color: white;
+
+    &:hover {
+      color: whitesmoke;
+    }
+
+    &:visited {
+      color: whitesmoke;
+    }
+  }
+
+  .dropdown-menu {
+    background-color: $mid_blue;
+
+    &:hover {
+      color: transparent;
+    }
   }
 }

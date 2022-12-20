@@ -23,11 +23,9 @@
         <td><%= user.shift %></td>
         <td><%= user.admin ? "Sí" : "No" %></td>
         <td>
-          <%= link_to edit_user_path(user) do %>
-            <i class="fab fa-github-square"></i>
-          <% end %>
-           <% if user != current_user  %>
-            <%= link_to "Borrar usuario", user_path(user), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <%= link_to "Editar",edit_user_path(user) %>
+          <% if user != current_user  %>
+            <%= link_to "Borrar", user_path(user), data: {turbo_method: :delete, turbo_confirm: "¿Está seguro?"} %>
           <% end %>
         </td>
       </tr>
