@@ -9,22 +9,23 @@
       <th scope="col">Matrícula</th>
       <th scope="col">Kilometraje</th>
       <th scope="col">Área que visita</th>
-      <th scope="col">Creado por</th>
+      <th scope="col">Creada por</th>
     </tr>
   </thead>
   <tbody>
     <% @entrances.each do |entrance| %>
-      <tr>
-        <td><%= entrance.date.strftime('%d-%m-%y') %></td>
-        <td> <%= entrance.time.strftime('%T') %></td>
-        <td><%= "#{entrance.first_name} #{entrance.last_name}" %></td>
-        <td><%= entrance.company.name %></td>
-        <td><%= entrance.company_vehicle.license_plate %></td>
-        <td><%= entrance.mileage %></td>
-        <td><%= entrance.destination %></td>
-        <td><%= "#{entrance.user.first_name} #{entrance.user.last_name}" %></td>
-      </tr>
+      <% if entrance.user.active && entrance.company_vehicle.active %>
+        <tr>
+          <td><%= entrance.date.strftime('%d-%m-%y') %></td>
+          <td> <%= entrance.time.strftime('%T') %></td>
+          <td><%= "#{entrance.first_name} #{entrance.last_name}" %></td>
+          <td><%= entrance.company.name %></td>
+          <td><%= entrance.company_vehicle.license_plate %></td>
+          <td><%= entrance.mileage %></td>
+          <td><%= entrance.destination %></td>
+          <td><%= "#{entrance.user.first_name} #{entrance.user.last_name}" %></td>
+        </tr>
+      <% end %>
     <% end %>
-
   </tbody>
 </table>

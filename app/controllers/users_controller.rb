@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_action :authenticate_admin!, except: :show
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy status]
 
   def index
-    @users = User.all
+    @users = User.order(active: :desc, last_name: :asc)
   end
 
   def show
@@ -28,6 +28,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def status
+    @user.active = !@user.active
+    @users = User.order(active: :desc)
+    redirect_to users_path if @user.save
+  end
+
   private
 
   def set_user
@@ -35,6 +41,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name, :shift, :employee_number, :admin)
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :shift, :employee_number, :admin, :active, :photo)
   end
 end

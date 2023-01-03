@@ -1,6 +1,17 @@
 <h1>Detalles del usuario</h1>
+<div class="card" style="width: 18rem;">
+  <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill  %>
+  <div class="card-body">
+    <h5 class="card-title">Nombre: <%= @user.first_name %> <%= @user.last_name %> </h5>
+    <p class="card-text">Turno: <%= @user.shift %></p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+
+
 <ul>
-  <li>Nombre: <%= @user.first_name %> <%= @user.last_name %></li>
+  <li>Nombre: </li>
   <li>Turno: <%= @user.shift %></li>
   <li>Número de trabajador: <%= @user.employee_number %></li>
   <li>Administrador: <%= @user.admin? ? "Sí" : "No" %></li>

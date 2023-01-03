@@ -46,6 +46,13 @@
       <%= f.label :Administrador, class: "my-1 w100" %> <br />
     </div>
 
+    <div class="field">
+      <%= f.check_box(:active) %>
+      <%= f.label :Activo, class: "my-1 w100" %> <br />
+    </div>
+
+    <%= f.file_field :photo %>
+
     <div class="actions">
       <%= f.submit "Aceptar", class: 'submit-btn my-1 py-1' %>
     </div>

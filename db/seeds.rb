@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 require 'faker'
+require "open-uri"
 
 puts "Creating companies, vehicles, entrances and exits"
 
@@ -28,24 +29,29 @@ admin = User.create(
   password: 123456,
   first_name: "Alan",
   last_name: "Vergara",
-  shift: "N/A",
+  shift: "No aplica",
   employee_number: 112233,
-  admin: true
+  admin: true,
 )
 
-company_vehicle = CompanyVehicle.all
-company = Company.all
+file = URI.open("https://res.cloudinary.com/alan-v-p/image/upload/v1672705790/Access%20Point/img_avatar_otcwb0.png")
+admin.photo.attach(io: file, filename: "user.jpg", content_type: "image/jpeg")
+
 
 15.times do
+  company = Company.all.sample
+  company_vehicle = company.company_vehicles.sample
+
   user = User.create(
-    email: Faker::Internet.email(domain: 'accesspoint'),
+    email: Faker::Internet.email(domain: 'checkpoint'),
     password: 123456,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     shift: %w[Matutino Vespertino].sample,
     employee_number: Faker::Number.leading_zero_number(digits: 6),
-    admin: false
+    admin: false,
   )
+  user.photo.attach(io: file, filename: "user.jpg", content_type: "image/jpeg")
 
   entrances = Entrance.create(
     date: Faker::Date.between(from: '2022-12-01', to: '2022-12-08'),
@@ -54,8 +60,8 @@ company = Company.all
     last_name: Faker::Name.last_name,
     destination: Faker::Company.industry,
     mileage: Faker::Vehicle.mileage(min: 1_000, max: 25_000).to_i,
-    company_id: company.sample.id,
-    company_vehicle_id: company_vehicle.sample.id,
+    company_id: company.id,
+    company_vehicle_id: company_vehicle.id,
     user_id: user.id
   )
 
@@ -67,8 +73,8 @@ company = Company.all
     destination: Faker::Company.industry,
     mileage: Faker::Vehicle.mileage(min: 1_000, max: 25_000).to_i,
     invoice: Faker::Invoice.reference,
-    company_id: company.sample.id,
-    company_vehicle_id: company_vehicle.sample.id,
+    company_id: company.id,
+    company_vehicle_id: company_vehicle.id,
     user_id: user.id
   )
 end

@@ -4,6 +4,10 @@
     <%= f.input :brand, label: 'Marca', error: '* campo obligatorio', label_html:{class:'my-1 w-100'}, input_html: {class:'my-1 w-100'} %>
     <%= f.input :model, label: 'Modelo', error: '* campo obligatorio', label_html:{class:'my-1 w-100'}, input_html: {class:'my-1 w-100'} %>
     <%= f.input :license_plate,  label: 'Matrícula', error: '* campo obligatorio', label_html:{class:'my-1 w-100'}, input_html: {class:'my-1 w-100'} %>
+    <div class="field">
+      <%= f.check_box(:active) %>
+      <%= f.label :Activo, class: "my-1 w100" %> <br />
+    </div>
     <%= f.submit "Aceptar", class: 'submit-btn my-3 py-1' %>
   <% end %>
 </div>

@@ -6,18 +6,20 @@
   <thead>
     <tr>
       <th scope="col">Nombre</th>
+      <th scope="col">Estatus</th>
       <th scope="col">Acciones para empresas</th>
-      <th scope="col">Vehículos registrados</th>
+      <th scope="col">Vehículos registrados de la empresa</th>
     </tr>
   </thead>
   <tbody>
     <% @companies.each do |company| %>
       <tr>
         <td><%= company.name%></td>
+        <td><%= company.active ? "Activa": "Inactiva" %></td>
 
         <td>
           <%= link_to "Editar", edit_company_path(company) %>
-          <%= link_to "Borrar", company_path(company), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+          <%= link_to  company.active ? "Desactivar" : "Activar", status_company_path(company), data: {turbo_method: :patch, turbo_confirm: "¿Estás seguro?"}%>
         </td>
 
 

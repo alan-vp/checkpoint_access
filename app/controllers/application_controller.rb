@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_premited_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name shift employee_number admin]) # Aquí determinamos los campos adicionales para el sign up.
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name shift employee_number admin active photo]) # Aquí determinamos los campos adicionales para el sign up.
   end
 
   def authenticate_admin!
