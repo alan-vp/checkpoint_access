@@ -32,7 +32,12 @@
       <%= f.label :Administrador, class: "my-1 w100" %> <br />
     </div>
 
-      <div class="field">
+    <div class="field">
+      <%= f.check_box(:active) %>
+      <%= f.label :Activo, class: "my-1 w100" %> <br />
+    </div>
+
+    <div class="field">
       <%= f.label :Password, class: "my-1 w100" %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> caracteres min)</em>

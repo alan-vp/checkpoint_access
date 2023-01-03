@@ -4,8 +4,12 @@
     <div class="field">
       <%= f.input :name, label: 'Nombre', error: '* campo obligatorio', label_html: {class: 'my-2 w-100'}, input_html: {class: 'mb-2 w-100'} %>
     </div>
+
+    <div class="field">
+      <%= f.check_box(:active) %>
+      <%= f.label :Activa, class: "my-1 w100" %> <br />
+    </div>
+
       <%= f.submit 'Aceptar', class: 'submit-btn my-2 py-1' %>
   <% end %>
 </div>
-
-<%= link_to "Back", companies_path %>

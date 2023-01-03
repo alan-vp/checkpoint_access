@@ -10,6 +10,7 @@
       <th scope="col">Marca</th>
       <th scope="col">Modelo</th>
       <th scope="col">Placa</th>
+      <th scope="col">Estatus</th>
       <th scope="col">Acciones</th>
     </tr>
   </thead>
@@ -19,10 +20,11 @@
         <td><%= vehicle.brand%></td>
         <td><%= vehicle.model%></td>
         <td><%= vehicle.license_plate%></td>
+        <td><%= vehicle.active ? "Activo" : "Inactivo" %></td>
 
         <td>
            <%= link_to "Editar", edit_company_vehicle_path(vehicle) %>
-           <%= link_to "Borrar", company_vehicle_path(vehicle), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+           <%= link_to vehicle.active ? 'Desactivar' : 'Activar', status_company_vehicle_path(vehicle), data: {turbo_method: :patch, turbo_confirm: "¿Estás seguro?"} %>
         </td>
 
       </tr>

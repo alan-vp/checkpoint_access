@@ -1,8 +1,8 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_admin!, except: :vehicles
-  before_action :set_company, only: %i[show edit update destroy]
+  before_action :set_company, only: %i[show edit update destroy status]
   def index
-    @companies = Company.all
+    @companies = Company.order(active: :desc, name: :asc)
   end
 
   def new
@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @company_vehicles = @company.company_vehicles
+    @company_vehicles = @company.company_vehicles.order(active: :desc)
   end
 
   def edit
@@ -39,6 +39,11 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def status
+    @company.active = !@company.active
+    redirect_to companies_path if @company.save
+  end
+
   def vehicles
     @target = params[:target] # params[:target] lo tomamos de la URL que se construyó en el company_controller.js
     @company = Company.find(params[:company]) # lo mismo sucede en este caso
@@ -55,7 +60,7 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:name)
+    params.require(:company).permit(:name, :active)
   end
 
 

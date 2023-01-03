@@ -10,22 +10,24 @@
       <th scope="col">Kilometraje</th>
       <th scope="col">Factura</th>
       <th scope="col">Destino</th>
-      <th scope="col">Creado por</th>
+      <th scope="col">Creada por</th>
     </tr>
   </thead>
   <tbody>
     <% @exits.each do |exit| %>
-      <tr>
-        <td><%= exit.date.strftime('%d-%m-%y') %></td>
-        <td> <%= exit.time.strftime('%T') %></td>
-        <td><%= "#{exit.first_name} #{exit.last_name}" %></td>
-        <td><%= exit.company.name %></td>
-        <td><%= exit.company_vehicle.license_plate %></td>
-        <td><%= exit.mileage %></td>
-        <td><%= exit.invoice %></td>
-        <td><%= exit.destination %></td>
-        <td><%= "#{exit.user.first_name} #{exit.user.last_name}" %></td>
-      </tr>
+      <% if exit.user.active && exit.company_vehicle.active %>
+        <tr>
+          <td><%= exit.date.strftime('%d-%m-%y') %></td>
+          <td> <%= exit.time.strftime('%T') %></td>
+          <td><%= "#{exit.first_name} #{exit.last_name}" %></td>
+          <td><%= exit.company.name %></td>
+          <td><%= exit.company_vehicle.license_plate %></td>
+          <td><%= exit.mileage %></td>
+          <td><%= exit.invoice %></td>
+          <td><%= exit.destination %></td>
+          <td><%= "#{exit.user.first_name} #{exit.user.last_name}" %></td>
+        </tr>
+      <% end %>
     <% end %>
 
   </tbody>

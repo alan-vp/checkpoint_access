@@ -16,6 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected # se necesita que el override el sign_up method este como protected
 
   def sign_up(resource, resource_path)
+    flash[:success] = "Usuario creado"
     # esto sobre escribe el auto sign in y evita que el usuario recién creado inicie sesión, sacando al admin
   end
 

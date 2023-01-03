@@ -11,6 +11,7 @@
       <th scope="col">Email</th>
       <th scope="col">Turno</th>
       <th scope="col">Admin</th>
+      <th scope="col">Estatus</th>
       <th scope="col">Acciones</th>
     </tr>
   </thead>
@@ -22,10 +23,11 @@
         <td><%= user.email %></td>
         <td><%= user.shift %></td>
         <td><%= user.admin ? "Sí" : "No" %></td>
+        <td><%= user.active ? "Activo" : "Inactivo" %></td>
         <td>
           <%= link_to "Editar",edit_user_path(user) %>
           <% if user != current_user  %>
-            <%= link_to "Borrar", user_path(user), data: {turbo_method: :delete, turbo_confirm: "¿Está seguro?"} %>
+            <%= link_to user.active ? "Desactivar" : "Activar", status_user_path(user), data: {turbo_method: :patch, turbo_confirm: "¿Estás seguro?"} %>
           <% end %>
         </td>
       </tr>

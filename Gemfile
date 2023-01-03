@@ -73,3 +73,7 @@ gem "cssbundling-rails", "~> 1.1"
 gem "jsbundling-rails", "~> 1.0"
 
 gem "font-awesome-sass", "~> 6.2"
+
+gem "dotenv-rails", groups: [:development, :test]
+
+gem "cloudinary"
