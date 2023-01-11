@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center mb-5">
   <%= simple_form_for @entrance, html: { class:'p-4 form-sessions'} do |f| %>
     <h3 class="text-center">Registro de entrada</h3>
     <%= f.input :date, as: :date, order: [:day, :month, :year], label: "Fecha:  ", error: '* campo obligatorio', label_html: {class: 'my-2 w-100'}, input_html: {class: 'mb-2 text-center'} %>
@@ -20,5 +20,3 @@
     <%= f.submit "Crear registro", class:'submit-btn my-2 py-1' %>
   <% end %>
 </div>
-
-<%= link_to "Volver", entrances_path %>
