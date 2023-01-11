@@ -117,3 +117,32 @@ h1 {
     }
   }
 }
+
+.user_image {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.employee-card-btn {
+  margin-bottom: 20px;
+
+  background-color: $dark_blue;
+  padding: 8px 8px;
+
+  font-weight: bold;
+  border-radius: 10px;
+  text-align: center;
+
+    a {
+      color: whitesmoke;
+      text-decoration: none;
+    }
+
+  &:hover {
+    color: white;
+  }
+}
+
+.employee-card-info {
+  margin: 10px 0;
+}

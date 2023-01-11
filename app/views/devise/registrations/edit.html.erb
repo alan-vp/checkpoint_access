@@ -1,6 +1,7 @@
 <h2 class="text-center mb-3">Editar usuario</h2>
 <div class="container d-flex justify-content-center">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class:'p-4 form-sessions' }, data: {turbo: false}) do |f| %>
+    <h2 class="text-center"> <%= @user.first_name %> <%= @user.last_name %></h2>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
@@ -57,8 +58,8 @@
   <% end %>
 </div>
 
-<% if current_user.admin? %>
-  <%= link_to "Volver", users_path %>
-<% else %>
-  <%= link_to "Volver", user_path(current_user) %>
-<% end %>
+<%# if current_user.admin? %>
+  <%#= link_to "Volver", users_path %>
+<%# else %>
+  <%#= link_to "Volver", user_path(current_user) %>
+<%# end %>

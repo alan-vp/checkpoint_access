@@ -1,25 +1,21 @@
-<h1>Detalles del usuario</h1>
-<div class="card" style="width: 18rem;">
-  <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill  %>
+<h1 class="text-center">Detalles del usuario</h1>
+
+<div class="card container d-flex justify-content-center mb-5" style="width: 20rem;">
+  <div>
+    <%= cl_image_tag @user.photo.key, crop: :fill, class: "user_image"  %>
+  </div>
   <div class="card-body">
-    <h5 class="card-title">Nombre: <%= @user.first_name %> <%= @user.last_name %> </h5>
-    <p class="card-text">Turno: <%= @user.shift %></p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title text-center employee-card-info">Nombre: <%= @user.first_name %> <%= @user.last_name %> </h5>
+    <p class="card-text text-center">Turno: <%= @user.shift %></p>
+    <p class="card-text text-center">N° de Empleado: <%= @user.employee_number %></p>
+    <p class="card-text text-center">Activo: <%= @user.active ? "Sí" : "No" %></p>
+    <p class="card-text text-center">Administrador: <%= @user.admin ? "Sí" : "No" %></p>
+  </div>
+  <div class="employee-card-btn">
+    <% if current_user.admin? %>
+      <%= link_to 'Editar', edit_user_path(@user) %>
+    <% else %>
+      <%= link_to 'Editar', edit_user_registration_path(@user) %>
+    <% end %>
   </div>
 </div>
-
-
-
-<ul>
-  <li>Nombre: </li>
-  <li>Turno: <%= @user.shift %></li>
-  <li>Número de trabajador: <%= @user.employee_number %></li>
-  <li>Administrador: <%= @user.admin? ? "Sí" : "No" %></li>
-</ul>
-
-<% if current_user.admin? %>
-  <%= link_to 'Editar', edit_user_path(@user)  %>
-  <%= link_to "Volver", users_path %>
-<% else %>
-  <%= link_to "Volver", root_path %>
-<% end %>
