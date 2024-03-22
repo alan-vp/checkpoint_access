@@ -1,24 +1,16 @@
-# README
+# Login.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![image](https://github.com/alan-vp/Index/assets/99031027/86006410-8f96-46ce-9248-0822e7494a95)
 
-Things you may want to cover:
+# Admin Dashboard.
 
-* Ruby version
+![image](https://github.com/alan-vp/Index/assets/99031027/f2322a7d-feb8-4fb9-9636-dd63702cc1b3)
 
-* System dependencies
+# User Dashboard displaying entrance records.
 
-* Configuration
+![image](https://github.com/alan-vp/Index/assets/99031027/e9d7fabe-06df-4b84-a665-be92d707dff6)
 
-* Database creation
+# Profile page.
 
-* Database initialization
+![image](https://github.com/alan-vp/Index/assets/99031027/0ffd7f8f-3078-491b-a943-92e1eb1feb24)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
